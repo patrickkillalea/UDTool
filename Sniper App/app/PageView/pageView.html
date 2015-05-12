@@ -1,0 +1,178 @@
+﻿<section id="pageView-view" class="container" data-ng-controller="pageView as vm">
+    <br />
+    <div id="prodAlert" class="alert alert-danger" role="alert" hidden>
+       <p style ="font-weight:bold;text-align:center"> Your target environment is a Production region</p>
+    </div>
+
+    <div  id="topHeaders">
+        
+        <div class="top-bar col-xs-3" id="environmentHeader">
+        <p>Environment</p>
+        </div>
+        <div class="top-bar col-xs-offset-1 col-xs-4" id="switchHeader"">
+        <p>Search By</p>
+        </div>
+        <div class="top-bar col-xs-offset-1 col-xs-3" id="searchHeader">
+        <p>Criteria</p>
+        </div>
+    </div>
+    <br>
+   <div class="top-bar row" id="searchBar">
+        <div class="top-bar col-xs-3" style="margin-top: 4px;">
+             <div class="btn-group" dropdown="" id="te">
+                <button id="teBtn" class="btn small-primary-button" style="margin:0px" dropdown-toggle="">Target Environment</button>
+                <button class="btn small-primary-button dropdown-toggle" style="margin:0px"><span class="caret"></span></button>
+                <ul id="teDropdown" class="dropdown-menu" role="menu">
+                    
+                    <li><a data-ng-click="teBtnChange('Production V12')">Production V12</a></li>
+                    <li><a data-ng-click="teBtnChange('Production V11')">Production V11</a></li>
+                    <li><a data-ng-click="teBtnChange('Acceptance V12')">Acceptance V12</a></li>
+                    <li><a data-ng-click="teBtnChange('Acceptance V11')">Acceptance V11</a></li>
+                    <li><a data-ng-click="teBtnChange('Development V12')">Development V12</a></li>
+                    <li><a data-ng-click="teBtnChange('Development V11')">Development V11</a></li>
+                </ul>
+            </div>
+        </div>
+            <form class="navbar-form ng-pristine ng-valid" role="search">
+                <!--<div class='btn-group'dropdown >
+                    <button id='cBtn' class='btn small-primary-button' dropdown-toggle style="margin:0px">| Criteria |</button>
+                    <button class='btn small-primary-button dropdown-toggle' style="margin:0px"><span class='caret'></span></button>
+                    <ul id='criteriaDropdown' class='dropdown-menu'>
+                        <li><a data-ng-click="cBtnChange('Account Name')">Account Name</a></li>
+                        <li><a data-ng-click="cBtnChange('F Number')">F Number</a></li>
+                        <li><a data-ng-click="cBtnChange('BCN')">BCN</a></li>
+                    </ul>
+                </div>-->
+          <div class="switch-toggle switch-3 well  col-xs-offset-1  col-xs-4 " id="toggleSwitch"  hidden style=" font-size: 15px; line-height: 1.3333333; padding: 5px 2px 4px 5px; border-radius: 5px;">
+          <input id="account3" name="options" type="radio" checked="">
+          <label for="account3" style="color:black;  padding: 5px 0px 4px 5px; " onclick="">Account Name</label>
+
+          <input id="BCN4" name="options" type="radio">
+          <label for="BCN4" style="color:black; " onclick="">BCN</label>
+
+          <input id="FNumber5" name="options" type="radio">
+          <label for="FNumber5" style="color:black; " onclick="">FNumber</label>
+
+          <a class="btn btn-primary"></a>
+        </div>
+
+                <div class="top-bar pull-left col-xs-offset-1  col-xs-3" id="searchArea" hidden>
+                <input id="search" data-ng-model="search" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="Search Criteria">
+                <button id="searchBtN" style="margin-left: 0px; margin-right: 0px; padding: 6px 4px 8px 9px;" data-ng-click="getHarmonyAccounts(search)" class="btn small-primary-button"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        
+    </div>
+
+   <article id='resultsSection' class="row xtable" hidden>
+        <div class="col-xs-12">
+            <div class="xtable-header primary">
+                <div class="pull-left"><i class="fa fa-users"></i>Results</div>
+            </div>
+            <table class="xtable-table clicable" id="harmonyAcooutsTable">
+                <thead>
+                    <tr>
+                        <th style="cursor: pointer;" data-ng-click="orderByField='AccountName';  reverseSort = !reverseSort;">Account Name</th>
+                        <th style="cursor: pointer;" data-ng-click="orderByField='AccountNumber';  reverseSort = !reverseSort;">Harmony Account Number</th>
+                        <th style="cursor: pointer;" data-ng-click="orderByField='AccountId';  reverseSort = !reverseSort;">Account ID</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr data-ng-repeat="account in vm.accounts | orderBy: orderByField : reverseSort" id="{{account.AccountId}}">    
+                        <td class="AccountName">{{account.AccountName}}</td>
+                        <td class="AccountNumber">{{account.AccountNumber}}</td>
+                        <td class="AccountID">{{account.AccountId}}</td>
+                        <td class="Edit"> <input type="checkbox" data-ng-model="checked.value" data-ng-click="trDblClick(account.AccountId)"> <br/></td>
+                        <td class="actions" >
+                            <div class='btn-group' dropdown>
+                               <i dropdown-toggle class="fa fa-pencil" id='actionButton' data-ng-show="checked.value == true"></i>
+                                 <ul id='actionDropdown' class='dropdown-menu dropdown-menu-right' >
+                                     <li data-ng-repeat="fix in vm.fixes" id="{{fix.FixID}}"><a data-ng-click="correctionItemClick(fix, account)">{{fix.Name}}</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                     </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+    <br />
+    <div class="col-xs-offset-1 col-xs-8 " id="fixArea" hidden>
+        <div id="modalHeader" style="background: #059DA3; padding: 4px"> 
+            <div class="center-block" style="background: #059DA3; padding: 4px">
+                <h5><i class="fa fa-pencil-square-o fa-1x"></i><span id="modaltitle"></span></h5>
+            </div>
+
+            <div id="modalbody" style="background: #393f4f; border-bottom: 1px solid #535c70; padding: 6px">
+            </div>
+            <div id="modalfooter" align="right" style="background: #393f4f; border-bottom: 1px solid #535c70; padding: 6px">
+                <button type="button" id="saveBtn"  class="small-secondary-button" data-ng-click="addBCNToAccount()">Save</button>
+                <button type="button" id="cancelBtn" class="small-secondary-button" data-ng-click="hideWindow('fixArea')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='input-group col-xs-4' id='deactivateBcn'  hidden >
+     <article id='Article2' class="row xtable" hidden >
+         <div class="col-xs-12">
+            <div class="xtable-header primary">
+                <div class="pull-left"><i class="fa fa-users"></i>Deactivate BCN</div>
+                <div class="open-close pull-right"><i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></div>
+            </div>
+            <table class="xtable-table clicable" id="bcnTable">
+                <thead>
+                    <tr>
+                        <th>Bcn Number</th>
+                        <th>Bcn Id</th>
+                        <th>Description</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="bcn in vm.bcns" id="{{bcn.bcnId}}">
+                        <td class="AccountName">{{bcn.BcnNumber}}</td>
+                        <td class="AccountNumber">{{bcn.bcnId}}</td>
+                        <td class="AccountID">{{bcn.describition}}</td>
+                        <td class="Remove"> <input type="checkbox" data-ng-model="bcnChecked.value" data-ng-click="trBcnClick(bcn.bcnId,bcn.BcnNumber)"> </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </article>
+        <div id="buttonDiv" align="right" style="background: #393f4f; border-bottom: 1px solid #535c70; padding: 6px" hidden>
+        <button type="button" id="Button3" class="small-secondary-button" data-ng-click="removeBCNToAccount()"hidden>Save</button>
+        <button type="button" id="Button4" class="small-secondary-button" data-ng-click="hideWindow('deactivateBcn')" hidden>Cancel</button>
+        </div>
+    </div>
+
+    
+</section>
+
+
+<!--
+
+<div class='input-group col-xs-4'><span class='input-group-addon' style='width: 30%'>Account Name:</span>
+         <table class="xtable-table clicable">
+                <thead>
+                    <tr>
+                        <th>Bcn Number</th>
+                        <th>Bcn Id</th>
+                        <th>Describition</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr data-ng-repeat="bcn in vm.bcns" id="{{bcn.RowId}}">    
+                        <td class="AccountName">{{bcn.BcnNumber}}</td>
+                        <td class="AccountNumber">{{bcn.bcnId}}</td>
+                        <td class="AccountID">{{bcn.describition}}</td>
+                       <td class="Edit"> <input type="checkbox"> <br/></td>
+
+                     </tr>
+                </tbody>
+            </table>
+</div>
+
+-->

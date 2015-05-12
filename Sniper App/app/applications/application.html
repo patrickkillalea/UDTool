@@ -1,0 +1,195 @@
+﻿<section id="applcation-view" class="container" data-ng-controller="application as vm">
+
+    <form name="userForm" class="col-md-12 col-lg-12 col-sm-12">
+        <br />
+        <h3>Add Application </h3> 
+        <button id="addAppBtn" style="margin-left: 20px; display: none;" class="btn small-primary-button pull-right" data-ng-click="addApplication()"><i class="fa fa-floppy-o"></i>Save </button>
+        <br />
+
+        <script type="text/ng-template" id="databaseModal.html">
+            <div style="background-color: #383F4F" class="modal-header">
+                <h3 class="modal-title">Add New Database</h3>
+            </div>
+            <div style="background-color: #242A38; height: 200px" class="modal-body">
+                <ul><div class="row col-md-12 col-lg-12 col-sm-12">
+                            <br />
+                            <div class="button-bar pull-right"> 
+                                <button class="btn btn-info pull-right" type="submit" id="saveBtn" data-ng-disabled="databaseName.$pristine || serverName.$pristine" data-ng-click="addDatabase()"><i class="fa fa-save"></i>Save</button>
+                            </div>
+                            <div class="form-group">
+                                <label class="standard">Database Name:</label>
+                                <input type="text" name="databaseName" class="form-control" id="databaseName" placeholder="Enter Database Name">
+                            </div>
+                            <div class="pull-right">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="activeSwitch" data-ng-click="checkedBox()" checked>
+                                    <label class="onoffswitch-label" for="activeSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group" data-ng-class="">
+                                <label class="standard">Server Name</label>
+                                <select class="form-control standard" id="serverName" name="serverName" data-ng-model="serverName" data-ng-options="server for server in serversAvailable">
+                                    <option value="">-- Choose Server --</option>
+                                </select>
+                            </div>
+                            <br />
+                        </div>
+                </ul>
+            </div>
+            <div style="background-color: #383F4F" class="modal-footer">
+                <button class="btn small-primary-button" ng-click="cancelModal()">Cancel</button>
+            </div>
+        </script>
+
+        <div id="addApplicationForm" class="col-md-10 col-lg-10 col-sm-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+            <label class="standard form-">Application Name</label>
+            <br />
+            <input style="float: left; margin-right: 5%" type="text" class="form-control" id="applicationName" name="applicationName" placeholder="Enter Desired Server Name">
+            <div style="float: left">
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="applicationActive" data-ng-click="" checked>
+                    <label class="onoffswitch-label" for="applicationActive">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+                <br />
+            </div>
+            <div class="form-group">
+                <label class="standard form-">Choose Default Stored Procedure Name</label>
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-8 col-lg-8 col-sm-8" id="storedProcName" placeholder="Stored Procedure Name" />
+                    <span class="input-group-addon">
+                        <i id="storedProcFound" class="fa fa-check"></i>
+                        <i id="storedProcNotFound" class="fa fa-times"></i>
+                    </span>
+                </div>
+            </div>
+            <article id='applicationEnviroments' class="row xtable">
+                <div class="col-xs-12">
+                    <div style="max-height: 200px; overflow: auto">
+                        <div class="panel panel-default" style="background-color: #242A38; border-color: #383F4F; border-top-left-radius: 5px; border-top-right-radius: 5px">
+                            <div class="xtable-header primary test" data-toggle="tooltip" 
+                                data-original-title="This table will display all environments that you have added to the new application" 
+                                style="border-top-left-radius: 5px; border-top-right-radius: 5px">
+                                <div class="pull-left"><i class="fa fa-users"></i>Application Environments</div>
+                                <button id="newEnvironment" class="btn btn-success pull-right" data-ng-click="showEnvironments()"><i class="fa fa-plus-square"></i>New </button>
+
+                            </div>
+                            <table class="xtable-table clicable" id="environmentTable">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-3" style="cursor: pointer;">Name</th>
+                                        <th class="col-md-5" style="cursor: pointer;">Number of Datebases</th>
+                                        <th class="col-md-2" style="cursor: pointer;">Active</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="environment in applicationEnvironments" id="{{environment.Name}}">
+                                        <td class="col-md-3">{{environment.Name}} </td>
+                                        <td class="col-md-5">{{environment.Databases.length}} </td>
+                                        <td class="col-md-2">{{environment.Active}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <div id="addEnvironmentsForm" hidden>
+                <br />
+                <hr />
+                <h4>Add Environments                     
+                <button id="cancelAddEnvBtn" class="btn btn-info pull-right" data-ng-click="cancelAddEnvironment()"><i class="fa fa-undo"></i>Cancel</button>
+                </h4>
+                <br />
+                <label class="standard form-">Environment Name</label>
+                <br />
+                <input style="float: left; margin-right: 5%" type="text" class="form-control" id="environmentName" name="environmentName" placeholder="Enter Desired Environment Name">
+                <button id="addEnvironment" style="margin-left: 20px" class="btn btn-success" data-ng-click="addEnvironment()"><i class="fa fa-plus-square"></i>Add </button>
+                <div style="float: left">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="environmentActive" data-ng-click="" checked>
+                        <label class="onoffswitch-label" for="environmentActive">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <article id='usedDatabases' class="row xtable">
+                    <div class="col-xs-12">
+                        <div style="max-height: 400px; overflow: auto">
+                            <div class="panel panel-default" style="background-color: #242A38; border-color: #383F4F; border-top-left-radius: 5px; border-top-right-radius: 5px">
+                                <div class="xtable-header primary test" data-toggle="tooltip" 
+                                data-original-title="This table will display all databases that you have added to the environment" 
+                                    style="border-top-left-radius: 5px; border-top-right-radius: 5px">
+                                    <div class="pull-left"><i class="fa fa-users"></i>Environments Databases</div>
+                                </div>
+                                <table class="xtable-table clicable" id="Table1">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-3" style="cursor: pointer;">Database</th>
+                                            <th class="col-md-5" style="cursor: pointer;">Server</th>
+                                            <th class="col-md-2" style="cursor: pointer;">Active</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="database in databasesForEnvironment" id="{{database.Name}}">
+                                            <td class="Database col-md-3">"{{database.Name}}"</td>
+                                            <td class="Server col-md-5">{{database.Server}}</td>
+                                            <td class="Active col-md-2">{{database.Active}}</td>
+                                            <td>
+                                                <button id="database.Name+ 'Btn'" class="btn btn-info" data-ng-click="assignDatabase(database.Name, databasesForEnvironment, vm.databasesAvailable)"><i class="fa fa-minus-square"></i>REMOVE </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article id='unusedDatabases' class="row xtable">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default" style="background-color: #242A38; border-color: #383F4F; border-top-left-radius: 5px; border-top-right-radius: 5px">
+                            <div class="xtable-header primary test" data-toggle="tooltip" 
+                                data-original-title="These are the available databases that you can add to your environment" 
+                                style="border-top-left-radius: 5px; border-top-right-radius: 5px">
+                                <button class="btn btn-success pull-right" data-ng-click="open('sm')"><i class="fa fa-plus-square"></i>New</button>
+
+                                <div class="pull-left"><i class="fa fa-users"></i>Add Databases To Environment</div>
+                                <input style="color: black" class="pull-right input-sm" type="text" data-ng-model="filterName" placeholder="Filter Results" />
+                            </div>
+                            <div style="max-height: 400px; overflow: auto">
+                                <table class="xtable-table clicable" id="databaseTable" >
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-3" style="cursor: pointer;" data-ng-click="orderByField='Name';  reverseSort = !reverseSort;">Database</th>
+                                            <th class="col-md-5" style="cursor: pointer;" data-ng-click="orderByField='Server'; reverseSort = !reverseSort;">Server</th>
+                                            <th class="col-md-2" style="cursor: pointer;" data-ng-click="orderByField='Active'; reverseSort = !reverseSort;">Active</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="database in vm.databasesAvailable | orderBy: orderByField : reverseSort | filter: search" id="{{database.Name}}">
+                                            <td class="Database col-md-3">"{{database.Name}}"</td>
+                                            <td class="Server col-md-5">{{database.Server}}</td>
+                                            <td class="Active col-md-2">{{database.Active}}</td>
+                                            <td>
+                                                <button id="database.Name + 'Btn'" class="btn btn-info" data-ng-click="assignDatabase(database.Name, vm.databasesAvailable, databasesForEnvironment)"><i class="fa fa-plus-square"></i>ADD </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </article>
+            </div>
+        </div>
+    </form>
+</section>

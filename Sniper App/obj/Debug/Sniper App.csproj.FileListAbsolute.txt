@@ -1,0 +1,126 @@
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Sniper App.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Sniper App.pdb
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.ContextProvider.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.ContextProvider.EF6.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.Sharp.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.WebApi2.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.SqlServer.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Data.Edm.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Data.OData.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Data.Services.Client.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Newtonsoft.Json.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Net.Http.Formatting.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Spatial.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Helpers.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.OData.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.WebHost.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Mvc.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Razor.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Deployment.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Razor.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\WebActivator.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.Sharp.pdb
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.SqlServer.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\Newtonsoft.Json.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Net.Http.Formatting.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Helpers.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.OData.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.WebHost.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Mvc.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Razor.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Deployment.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Razor.xml
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\obj\Debug\Sniper App.dll
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\obj\Debug\Sniper App.pdb
+C:\Users\adk11\Desktop\Sniper\Sniper App\Dev\Sniper App\Sniper App\obj\Debug\Sniper App.csprojResolveAssemblyReference.cache
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Sniper App.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Sniper App.pdb
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.ContextProvider.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.ContextProvider.EF6.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.Sharp.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.WebApi2.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.SqlServer.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Data.Edm.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Data.OData.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Data.Services.Client.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Newtonsoft.Json.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Net.Http.Formatting.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Spatial.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Helpers.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.OData.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.WebHost.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Mvc.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Razor.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Razor.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\WebActivator.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Breeze.Sharp.pdb
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\EntityFramework.SqlServer.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\Newtonsoft.Json.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Net.Http.Formatting.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Helpers.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.OData.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Http.WebHost.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Mvc.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.Razor.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\bin\System.Web.WebPages.Razor.xml
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\obj\Debug\Sniper App.csprojResolveAssemblyReference.cache
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\obj\Debug\Sniper App.dll
+C:\Users\Pat\Downloads\Sniper App\Sniper App\Dev\Sniper App\Sniper App\obj\Debug\Sniper App.pdb
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Sniper App.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Sniper App.pdb
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Breeze.ContextProvider.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Breeze.ContextProvider.EF6.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Breeze.Sharp.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Breeze.WebApi2.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\EntityFramework.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\EntityFramework.SqlServer.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Microsoft.Data.Edm.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Microsoft.Data.OData.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Microsoft.Data.Services.Client.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Newtonsoft.Json.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Net.Http.Formatting.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Spatial.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Helpers.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Http.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Http.OData.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Http.WebHost.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Mvc.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Razor.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.WebPages.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.WebPages.Razor.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\WebActivator.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Breeze.Sharp.pdb
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\EntityFramework.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\EntityFramework.SqlServer.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\Newtonsoft.Json.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Net.Http.Formatting.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Helpers.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Http.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Http.OData.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Http.WebHost.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Mvc.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.Razor.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.WebPages.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\bin\System.Web.WebPages.Razor.xml
+C:\Users\Pat\Desktop\Sniper App\Sniper App\obj\Debug\Sniper App.csprojResolveAssemblyReference.cache
+C:\Users\Pat\Desktop\Sniper App\Sniper App\obj\Debug\Sniper App.dll
+C:\Users\Pat\Desktop\Sniper App\Sniper App\obj\Debug\Sniper App.pdb

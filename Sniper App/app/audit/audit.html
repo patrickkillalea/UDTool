@@ -1,0 +1,151 @@
+﻿<section id="audit-view" class="container" data-ng-controller="audit as vm">
+    <br />
+    <br />
+    <div class="bs-example col-xs-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="/audit#sectionB">Audits</a></li>
+            <li><a data-toggle="tab" href="/audit#sectionC" data-ng-click="updateCharts()">Audit Analysis</a></li>
+        </ul>
+        <!--Main Contents-->
+        <div class="tab-content">
+            <div id="sectionB" class="tab-pane fade in active">
+                <br />
+                <button class="btn btn-default small-primary-button" id="filterBtn" data-ng-click="collapse()">Filters</button>
+                <br />
+                <div class="filter-menu-div">
+                    <div data-collapse="isCollapsed">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="span3" id="systemSearch">
+                                    <div class='btn-group' data-dropdown>
+                                        <button id='systemBtn' class='btn small-secondary-button filterButtonsAudits' data-dropdown-toggle style="margin: 0px">System</button>
+                                        <button class='btn small-secondary-button dropdown-toggle' style="margin: 0px"><span class='caret'></span></button>
+                                        <ul id="systemDropDown" class='dropdown-menu'>
+                                            <li data-ng-repeat="app in vm.applications" id="app.ApplicationID"><a data-ng-click="systemChange(app)" data-ng-bind="app.Name"></a></li>
+                                        </ul>
+                                        <input type="text" id="activeSystem" class="filterModelsAudits" data-ng-model="search.Application.Name" hidden />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="span3" id="EnviromentSearch">
+                                    <div class='btn-group' data-dropdown>
+                                        <button id='enviromentBtn' class='btn small-secondary-button filterButtonsAudits' data-dropdown-toggle style="margin: 0px">Environment</button>
+                                        <button class='btn small-secondary-button dropdown-toggle' style="margin: 0px"><span class='caret'></span></button>
+                                        <ul id="enviromentDropDown" class='dropdown-menu'>
+                                            <li data-ng-repeat="enviroment in selectedApp.AppEnvironments" class="enviromentsSelect" id="enviroment.AppEnvironmentID">
+                                                <a data-ng-click="enviromentChange(enviroment.Name)" data-ng-bind="enviroment.Name"></a>
+                                            </li>
+                                        </ul>
+                                        <input type="text" id="activeEnviroment" class="filterModelsAudits" style="color: black;" data-ng-model="search.AppEnvironment.Name" hidden />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="span3" id="fixesOnlysearch">
+                                    <button type="button" id="fixOnlyBtn" class="btn small-secondary-button filterButtonsAudits" data-ng-change="applyFixOnly()" data-ng-model="FIX_ONLY" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Fixes Only</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="span3" id="eventFixSearch">
+                                    Event/Fix
+                                        <input type="text" class="form-control filterModelsAudits" data-ng-model="search.Event" id="eventFixInput">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="span3" id="LanIDSearch">
+                                    User
+                                    <input id="searchUser" data-ng-model="searchUserPerson" class="form-control filterModelsAudits" style="color: black" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="span3" id="dateSearch">
+                                    Date Search
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <input type="text" class="input-sm form-control" name="startDate" data-ng-change="" id="startDate" data-ng-model="dateFrom" />
+                                        <span class="input-group-addon">to</span>
+                                        <input type="text" class="input-sm form-control" id="endDate" name="endDate" data-ng-model="endDate" />
+                                    </div>
+                                    <!-- <input type="Date" class="form-control" data-ng-model="onlyDateInput" class='form-control' id="Date1">-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <article id='auditResultsCriteria' class="row xtable">
+                    <div class="col-xs-12">
+                        <div class="xtable-header primary">
+                            <div class="pull-left"><i class="fa fa-edit"></i>Audits</div>
+                        </div>
+                        <div id="auditsHeadingsCriteria">
+                            <table class="xtable-table clicable">
+                                <thead>
+                                    <tr>
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='User.LastName';  reverseSort = !reverseSort;">User</th>
+                                        <!--                                        <th hidden>Lan ID</th>-->
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='System';  reverseSort = !reverseSort;">System</th>
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='Environment';  reverseSort = !reverseSort;">Environment</th>
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='Event';  reverseSort = !reverseSort;">Event/Fix</th>
+                                        <!--                                        <th hidden>Key Value</th>-->
+                                        <!--                                        <th style="cursor: pointer;" data-ng-click="orderByField='Fix';  reverseSort = !reverseSort;">Fix</th>-->
+                                        <!--   <th hidden >Value Start</th>
+                                        <th hidden >Value End</th>-->
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='TimeStamp';  reverseSort = !reverseSort;">Timestamp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="auditResult in vm.allAudits | filter:search | filter:searchUser | filter:filterDates" id="auditResult.AuditID" data-ng-click="">
+                                        <td class="User" data-ng-bind="auditResult.User.LastName + ', '+ auditResult.User.FirstName "></td>
+                                        <!--                                        <td class="LanID" data-ng-bind="auditResult.LanID" hidden></td>-->
+                                        <td class="System" data-ng-bind="auditResult.Application.Name"></td>
+                                        <td class="Enviroment auditResult.AppEnvironment.Name" data-ng-bind="auditResult.AppEnvironment.Name"></td>
+                                        <td class="Event/Fix" data-ng-bind="checkFix(auditResult)"></td>
+                                        <!--<td hidden data-ng-bind="auditResult.KeyValue" class="Key Value"></td>-->
+                                        <!--                                        <td data-ng-bind="auditResult.Fix.Name" class="Fix ID"></td>-->
+                                        <!--                                        <td data-ng-bind="auditResult.ValueStart" hidden class="Value Start"></td>-->
+                                        <!--<td data-ng-bind="auditResult.ValueEnd" hidden class="Value End"></td>-->
+                                        <td class="Timestamp"><time data-ng-bind="auditResult.TimeStamp"></time></td>
+                                        <td hidden class="validFix" data-ng-bind="auditResult.validFix"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+            <div id="sectionC" class="tab-pane fade">
+                <div id="auditAnalysis" class="container">
+
+                    <article id='auditAnalysisArticle' class="row xtable">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="span6" id="usersPieChart"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="span6" id="eventsBarChart"></div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="span6" id="usersPieCharSniper"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="span6" id="usersBarChartSniper"></div>
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

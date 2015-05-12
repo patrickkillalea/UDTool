@@ -1,0 +1,104 @@
+﻿<section id="addFix-view" class="container" data-ng-controller="addFix as vm">
+    <form name="userForm" data-ng-submit="submitForm(userForm.$valid)" novalidate>
+        <br />
+        <br />
+        <div class="bs-example col-md-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="/addFix#sectionA">Add Fix</a></li>
+                <li><a data-toggle="tab" href="/addFix#sectionB">Edit Fix</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="sectionA" class="tab-pane fade in active">
+                    <div class="row col-md-6">
+                        <br />
+                        <div class="form-group" data-ng-class="{ 'has-error' : userForm.fixName.$invalid && !userForm.fixName.$pristine }">
+                            <label class="standard">Fix Name:</label>
+                            <input type="text" class="form-control" data-ng-model="user.fixName" id="fixName" placeholder="Enter fix name">
+                            <p data-ng-show="userForm.fixName.$invalid && userForm.fixName.$pristine" class="help-block">A fix name is required.</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="standard">Fix Description:</label>
+                            <textarea class="form-control" rows="3" cols="60" id="fixDescription" placeholder="Enter fix description"></textarea>
+                        </div>
+                    </div>
+                    <div class="row col-md-6">
+                        <br />
+                        <div class="form-group">
+                            <label class="standard">Select Application</label>
+                            <select class="form-control short" id="applicationSelection" name="applicationSelection" data-ng-model="applicationSelection" data-ng-change="selectApplication()" data-ng-options="application.Name for application in vm.applicationsAvailable" required>
+                                <option value="">Select Application </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="standard">Select Update Database</label>
+                            <select class="form-control short" name="updateDBSelection" data-ng-model="updateDBSelection" data-ng-change="" data-ng-options="database.Name for database in vm.applicationDatabasesAvailable" required>
+                                <option value="">Select Database </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="standard">Enter Stored Procedure Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="storedUpdateProcName" placeholder="Stored Procedure Name" />
+                                <span class="input-group-addon">
+                                    <i id="storedUpdateProcFound" class="fa fa-check"></i>
+                                    <i id="storedUpdateProcNotFound" class="fa fa-times"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="standard">Select View Database</label>
+                            <select class="form-control short" name="viewDBSelection" data-ng-model="viewDBSelection" data-ng-change="" data-ng-options="database.Name for database in vm.applicationDatabasesAvailable" required>
+                                <option value="">Select Database </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="standard">Enter Stored Procedure Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="storedViewProcName" placeholder="Stored Procedure Name" />
+                                <span class="input-group-addon">
+                                    <i id="storedViewProcFound" class="fa fa-check"></i>
+                                    <i id="storedViewProcNotFound" class="fa fa-times"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sectionB" class="tab-pane fade">
+                    <article id='resultsSection' class="row xtable">
+                        <div class="col-xs-12">
+                            <div class="xtable-header primary">
+                                <div class="pull-left"><i class="fa fa-edit"></i>Fixes</div>
+                            </div>
+                            <div id="toggleTable">
+                                <table class="xtable-table clicable">
+                                    <thead>
+                                        <tr>
+                                            <th>Fix ID</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="fix in vm.fixesAvailable" id="{{fix.FixID}}" data-ng-dblclick="trDblClick(fix.FixID)">
+                                            <td class="Fix ID">{{fix.FixID}}</td>
+                                            <td class="Fix Name">{{fix.Name}}</td>
+                                            <td class="Description">{{fix.Description}}</td>
+                                            <td class="actions">
+                                                <div class='btn-group' dropdown>
+                                                    <i dropdown-toggle class="fa fa-pencil" id='actionButton'></i>
+                                                    <ul id='actionDropdown' class='dropdown-menu dropdown-menu-left'>
+                                                        <li data-ng-repeat="fix in vm.fixes" id="Li1"><a data-ng-click="correctionItemClick(fix, account)">{{fix.Name}}</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

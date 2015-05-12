@@ -1,0 +1,97 @@
+﻿<section id="addEditDatabase-view" class="container" data-ng-controller="addEditDatabase as vm">
+    <link rel="stylesheet" type="text/css" href="Content/styles.css">
+
+    <form name="userForm" data-ng-submit="submitForm(userForm.$valid)" novalidate>
+        <br />
+        <br />
+        <div class="bs-example col-md-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="/addEditDatabase#sectionA">Add Database</a></li>
+                <li><a data-toggle="tab" href="/addEditDatabase#sectionB">Edit Database</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="sectionA" class="tab-pane fade in active">
+                    <div class="row col-md-12 col-lg-12 col-sm-12">
+                        <br />
+                        <div class="button-bar pull-right">
+                            <button class="btn btn-info" type="submit" id="saveBtn" data-ng-disabled="userForm.databaseName.$pristine || userForm.serverName.$pristine" data-ng-click="addDatabase()"><i class="fa fa-save"></i>Save</button>
+                        </div>
+                        <div class="form-group" data-ng-class="{ 'has-error' : userForm.databaseName.$invalid && !userForm.databaseName.$pristine }">
+                            <label class="standard">Database Name:</label>
+                            <input type="text" name="databaseName" class="form-control" data-ng-model="user.databaseName" id="databaseName" placeholder="Enter Database Name">
+
+                            <p data-ng-show="userForm.databaseName.$invalid && userForm.databaseName.$pristine" class="help-block">A fix name is required.</p>
+                        </div>
+                        <div class="pull-right">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="activeSwitch" data-ng-click="checkedBox()" checked>
+                                <label class="onoffswitch-label" for="activeSwitch">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" data-ng-class="{ 'has-error' : userForm.serverName.$invalid && !userForm.serverName.$pristine }">
+                            <label class="standard">Server Name</label>
+                            <select class="form-control standard" name="serverName" id="serverName" data-ng-model="user.serverName" data-ng-options="server for server in vm.serversAvailable">
+                                <option value="">-- Choose Server --</option>
+                            </select>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <div id="sectionB" class="tab-pane fade">
+                    <div class="row col-md-12 col-lg-12 col-sm-12">
+                        <br />
+                        <div class="button-bar pull-right">
+                            <button class="btn btn-info" data-ng-click="cancelEdit()"><i class="fa fa-undo"></i>Cancel</button>
+                            <button class="btn btn-info" type="submit" id="editBtn" data-ng-disabled="userForm.editServer.$pristine || userForm.editDatabase.$pristine" data-ng-click="showEdit()"><i class="fa fa-pencil-square-o"></i>Edit</button>
+                            <button class="btn btn-info" type="submit" id="saveEditBtn" data-ng-disabled="true" data-ng-click="editDatabase()"><i class="fa fa-save"></i>Save</button>
+                        </div>
+                        <div class="form-group" data-ng-class="{ 'has-error' : userForm.editServer.$invalid && !userForm.editServer.$pristine }">
+                            <label class="standard">Server Name for Database Edit:</label>
+                            <select class="form-control standard" name="editServer" id="editServer" data-ng-change="editDatabases()" data-ng-model="user.editServer" data-ng-options="server for server in vm.serversAvailable">
+                                <option value="" disabled>-- Choose Server --</option>
+                            </select>
+                        </div>
+                        <div class="button-bar pull-right">
+                            <button class="btn btn-danger" type="submit" id="removeDB" data-ng-disabled="true" data-ng-click="removeDatabase()"><i class="fa fa-trash-o"></i>Remove</button>
+                        </div>
+                        <div class="form-group" data-ng-class="{ 'has-error' : userForm.editDatabase.$invalid && !userForm.editDatabase.$pristine }">
+                            <label class="standard">Database to be Edited:</label>
+                            <select class="form-control standard" name="editDatabase" id="editDatabase" onchange="" data-ng-model="user.editDatabase" data-ng-options="database for database in vm.databasesToEdit">
+                                <option value="" disabled>-- Choose Database --</option>
+                            </select>
+                        </div>
+
+                        <div id="hiddenUntilEdit" hidden>
+                            <br />
+                            <hr />
+                            <label>EDIT DATABASE INFO</label>
+                            <div class="pull-right">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="editActiveSwitch" data-ng-click="">
+                                    <label class="onoffswitch-label" for="editActiveSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group" data-ng-class="{ 'has-error' : userForm.editDatabaseName.$invalid && !userForm.editDatabaseName.$pristine }">
+                                <label class="standard">Change Database Name:</label>
+                                <input type="text" name="editDatabaseName" class="form-control" data-ng-model="user.editDatabaseName" id="editDatabaseName" placeholder="Enter Database Name">
+                                <p data-ng-show="userForm.editDatabaseName.$invalid && userForm.editDatabaseName.$pristine" class="help-block">A fix name is required.</p>
+                            </div>
+                            <div class="form-group" data-ng-class="{ 'has-error' : userForm.serverName.$invalid && !userForm.serverName.$pristine }">
+                                <label class="standard">Change Server Name</label>
+                                <select class="form-control standard" name="editServerName" id="editServerName" data-ng-model="user.editServerName" data-ng-options="server for server in vm.serversAvailable">
+                                    <option value="" disabled>-- Choose Server --</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

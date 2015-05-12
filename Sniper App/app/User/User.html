@@ -1,0 +1,321 @@
+﻿<section id="User-view" class="container" data-ng-controller="User as vm">
+        <br />
+    <br />
+        <div class="bs-example col-md-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="/User#sectionA">View User/Groups</a></li>
+                <li><a data-toggle="tab" href="/User#sectionB">Add User</a></li>
+                <li><a data-toggle="tab" href="/User#sectionC">Edit User Info</a></li> 
+                <li><a data-toggle="tab" href="/User#sectionD">Edit User Premissions </a></li> 
+                <li><a data-toggle="tab" href="/User#sectionE">Add Groups </a></li> 
+            </ul>
+
+            <div class="tab-content">
+
+               <!--Section A |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <div id="sectionA" class="tab-pane fade in active ">
+                <div class="header-bar ">
+                     <h3 class="page-title">View User/Groups</h3>
+                </div>
+                    
+                <div class="col-xs-offset-1" >
+                <button class="btn btn-default pull-left small-primary-button col-xs-offset-5" id="filterBtn" data-ng-click="collapse()">Filters</button>
+                </div>
+                
+                <div class="filterdiv col-xs-offset-1 col-xs-10 col-xs-offset-1">
+                    <div data-collapse="isCollapsed">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="span3" id="activeSearch">
+                                    <div class='btn-group' data-dropdown>
+                                        <button id='activeBtn' class='btn small-secondary-button filterButtonsAudits' data-dropdown-toggle style="margin: 0px">Active  /  Inactive</button>
+                                        <button class='btn small-secondary-button dropdown-toggle' style="margin: 0px"><span class='caret'></span></button>
+                                        <ul id="activeDropDown" class='dropdown-menu'>
+                                            <li data-ng-repeat="isActive in vm.userActive" class="activeSelect" id="isActive.Active">
+                                               <a data-ng-click="activeChange(isActive.Text ,isActive.Active)" data-ng-bind="isActive.Text"></a>
+                                            </li>
+                                        </ul>
+                                        <input type="text" id="activeStatus" data-ng-model="search.Active" class="filterModels" style="color: black;"  hidden />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="span3" id="GroupSearch">
+                                    <div class='btn-group' data-dropdown>
+                                        <button id='groupBtn' class='btn small-secondary-button filterButtonsAudits' data-dropdown-toggle style="margin: 0px">Group</button>
+                                        <button class='btn small-secondary-button dropdown-toggle' style="margin: 0px"><span class='caret'></span></button>
+                                        <ul id="groupDropDown" class='dropdown-menu'>
+                                            <li data-ng-repeat="group in vm.groups" class="groupSelect" id="group.GroupID">
+                                                <a data-ng-click="groupChange(group.GroupID)" data-ng-bind="group.GroupName"></a>
+                                            </li>
+                                        </ul>
+                                        <input type="text" id="activeGroup" class="filterModels" style="color: black;" data-ng-model="Group.GroupName" hidden />
+                                    </div>
+                                </div>
+                            </div>
+
+                      <div class="col-md-4">
+                                <div class="span3" id="serachUserType">
+                                    <div class='btn-group' data-dropdown>
+                                        <button id='typeBtn' class='btn small-secondary-button filterButtonsAudits' data-dropdown-toggle style="margin: 0px">User Type</button>
+                                        <button class='btn small-secondary-button dropdown-toggle' style="margin: 0px"><span class='caret'></span></button>
+                                        <ul id="typeDropDown" class='dropdown-menu'>
+                                            <li data-ng-repeat="Utype in vm.userType" class="typeSelect" id="Utype.ID">
+                                             <a data-ng-click="typeChange(Utype.TypeName,Utype.ID)" data-ng-bind="Utype.TypeName"></a>
+                                            </li>
+                                        </ul>
+                                        <input type="text" id="activeType" class="filterModels" style="color: black;" data-ng-model="search.UserType" hidden />
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="span3" id="LanIDSearch">
+                                    User
+                                    <br />
+                                    <input id="searchUser" data-ng-model="searchUserPerson" class="form-control filterModels" style="width: 174px; color: black" type="text">
+                                </div>
+
+                            </div>
+                               <div class="col-md-offset-4 col-md-3">
+                                <div class="span3" id="dateSearch">
+                                    Date Search
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <input type="text" class="input-sm form-control" name="startDate" data-ng-change="" id="startDate" data-ng-model="dateFrom" />
+                                        <span class="input-group-addon">to</span>
+                                        <input type="text" class="input-sm form-control" id="endDate" name="endDate" data-ng-model="endDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+              
+                <article id='auditResultsCriteria' class="row xtable">
+                    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
+                       <br>
+                        <div class="xtable-header primary">
+                            <div class="pull-left"><i class="fa fa-edit"></i>Users / Groups</div>
+                        </div>
+                        <div id="auditsHeadingsCriteria">
+                            <table class="xtable-table clicable">
+                                <thead>
+                                    <tr>
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='User.LastName';  reverseSort = !reverseSort;">User</th>
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='System';  reverseSort = !reverseSort;">UserType</th>
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='Active';  reverseSort = !reverseSort;">Active / Inactive</th>
+                                        <th style="cursor: pointer;" data-ng-click="orderByField='TimeStamp';  reverseSort = !reverseSort;">Timestamp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="User in vm.users | filter:search | filter:searchUser | filter:filterDates " id="User.LanID" data-ng-click="">
+                                        <td class="User" data-ng-bind="User.LastName + ', '+ User.FirstName "></td>
+                                        <td class="UserType" data-ng-bind="User.UserType"></td>
+                                        <td class="Active" data-ng-bind="User.Active"></td>
+                                        <td class="Timestamp"><time data-ng-bind="User.TimeStamp"></time></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <!--End of SectionA-->
+                
+                <!--Section B |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <div id="sectionB" class="tab-pane fade">
+                        <div class="form-group">
+                            <div class="header-bar">
+                                <h3 class="page-title">Add New User</h3>
+                            </div>
+                            <div class="button-bar">
+                                <button class="btn btn-info" data-ng-click="cancel()"><i class="fa fa-undo"></i>Cancel</button>
+                        <button class="btn btn-info" type="button" data-ng-click="addUser()"><i class="fa fa-save"></i>Save</button>
+                            </div>
+                        </div>
+
+
+                         <div class="form-group" data-ng-class="{ 'has-error' : userForm.lanID.$invalid && !userForm.lanID.$pristine }">
+                            <label class="standard">Lan ID</label>
+                            <input id="addLan" class="form-control standard" type="text" data-ng-model="user.LanID" name="lanID" placeholder="Enter Lan ID" required>
+                            <p data-ng-show="userForm.lanID.$invalid && !userForm.lanID.$pristine" class="help-block">A lan ID is required.</p>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine }">
+                            <label class="standard">First Name</label>
+                            <input id="addFName" class="form-control standard" type="text" ng-model="user.FirstName" name="firstName" placeholder="Enter First Name" required>
+                            <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block">A first name is required.</p>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.lastName.$invalid && !userForm.lastName.$pristine }">
+                            <label class="standard">Last Name</label>
+                            <input id="addLName" class="form-control standard" type="text" ng-model="user.LastName" name="lastName" placeholder="Enter Last Name" required>
+                            <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">A last name is required.</p>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.userType.$invalid && !userForm.userType.$pristine }">
+                            <label class="standard">User Type</label>
+                            <select id="addType" class="form-control standard" name="userType" required>
+                                <option value="">-- Choose User Type --</option>
+                                <option value="1">General</option>
+                                <option value="2">Admin</option>
+                            </select>
+                            <p ng-show="userForm.userType.$invalid && !userForm.userType.$pristine" class="help-block">A user type is required.</p>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.userType.$invalid && !userForm.userType.$pristine }">
+                            <label class="standard">Add User To Exsisting Group </label>
+                    <select id="addGroup" class="form-control standard" style="color: black;" name="group" ng-model="group.SelectedOption.ID" ng-options="(group.GroupID+' '+group.GroupName) for group in vm.groups track by group.GroupID" required>
+                        <option style="display: none" value="">-- Choose Group ID --</option>
+                            </select>
+                            <p ng-show="userForm.GroupID.$invalid && !userForm.GroupID.$pristine" class="help-block">A user type is required.</p>
+                        </div>
+                <br />
+                <br />
+                <br />
+
+                </div>
+
+                <!--Section C |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+                <div id="sectionC" class="tab-pane fade">
+                        <div class="form-group">
+                            <div class="header-bar">
+                                <h3 class="page-title">Edit User</h3>
+                            </div>
+                    <div class="button-bar">
+                        <button id="editCancel" class="btn btn-info" data-ng-click="cancel()" disabled><i class="fa fa-undo"></i>Cancel</button>
+                                <button id="editSave" class="btn btn-info" data-ng-click="updateUser()" disabled><i class="fa fa-save"></i>Save</button>
+                        <button id="editButton" class="btn btn-info" data-ng-click="enable()" disabled><i class="fa fa-pencil-square-o"></i>Edit</button>
+                            </div>
+                        </div>
+
+
+                         <div id="editLAN" class="form-group" ng-class="{ 'has-error' : userForm.lanID.$invalid && !userForm.lanID.$pristine }">
+                            <label class="standard">Lan ID</label>
+                              <select id="displayHolder" class="form-control standard" name="EditLan" ng-click="enableEdit()" ng-model="user.SelectedOption.ID" ng-options="(user.LanID) for user in vm.users track by user.LanID" required>
+                        <option style="display: none" value="">-- Choose LAN ID To Edit --</option>
+                              </select>
+                            <p ng-show="userForm.lanID.$invalid && !userForm.lanID.$pristine" class="help-block">A lan ID is required.</p>
+                        </div>
+                <div id="editOp">
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine }">
+                            <label class="standard">First Name</label>
+                            <input id="editFName" class="form-control standard" type="text" ng-model="user.FirstName" name="firstName" placeholder="First Name" disabled>
+                            <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block">A first name is required.</p>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.lastName.$invalid && !userForm.lastName.$pristine }">
+                            <label class="standard">Last Name</label>
+                        <input id="editLName" class="form-control standard" type="text" ng-model="user.LastName" name="lastName" placeholder="Last Name" disabled>
+                            <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">A last name is required.</p>
+                        </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.userType.$invalid && !userForm.userType.$pristine }">
+                            <label class="standard">User Type</label>
+                            <select id="editType" class="form-control standard" name="userType" disabled>
+                                <option value="1">General</option>
+                                <option value="2">Admin</option>
+                            </select>
+                            <p ng-show="userForm.userType.$invalid && !userForm.userType.$pristine" class="help-block">A user type is required.</p>
+                        </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.userType.$invalid && !userForm.userType.$pristine }">
+                            <label class="standard">Add User To Exsisting Group </label>
+                            <select id="editGroup" class="form-control standard" name="group" data-ng-model="group.SelectedOption.ID" data-ng-init="group.SelectedOption.ID='-- Choose Group ID --'" data-ng-options="(group.GroupID+' '+group.GroupName) for group in vm.groups track by group.GroupID" disabled>
+                            <option style="display: none" value="">-- Choose Group ID --</option>
+                            </select>
+                            <p ng-show="userForm.GroupID.$invalid && !userForm.GroupID.$pristine" class="help-block">A user type is required.</p>
+                        </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.Active.$invalid && !userForm.Active.$pristine }">
+                        <label class="standard">
+                            Active / Deactive
+                            </label>
+                        <select id="editActive" class="form-control standard" name="active" disabled>
+                            <option style="display: none" value="">-- Active / Deactive --</option>
+                                <option value="true">Activate</option>
+                                <option value="false">Deactivate</option>
+                            </select>
+                            <p ng-show="userForm.Active.$invalid && !userForm.Active.$pristine" class="help-block">A user type is required.</p>
+                        </div>
+
+
+                        </div>
+
+                </div>
+                <br />
+
+                <!--Section D |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+                <div id="sectionD" class="tab-pane fade">
+                    <div class="header-bar">
+                        <h3 class="page-title">Edit User Premissions</h3>
+                    </div>
+                    <div class="button-bar">
+                        <button class="btn btn-info" ng-click="cancel()"><i class="fa fa-undo"></i>Cancel</button>
+                        <button class="btn btn-info" type="submit" ng-disabled="userForm.$invalid"><i class="fa fa-save"></i>Save</button>
+                    </div>
+                    <br>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.lanID.$invalid && !userForm.lanID.$pristine }">
+                        <label class="standard">Lan ID</label>
+                        <select class="form-control standard" name="userType" ng-model="user.UserID" ng-options="User.UserID for type in vm.UserID" required>
+                            <option value="">-- Choose LAN ID To Edit --</option>
+                        </select>
+                        <p ng-show="userForm.lanID.$invalid && !userForm.lanID.$pristine" class="help-block">A lan ID is required.</p>
+                    </div>
+
+                <div class="panel panel-info" style="color: black;" ng-class="{ 'panel-danger': (!applicationPristine) && noApplication }">
+                        <div class="panel-heading">
+                            Application Permissions
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Development 1</th>
+                                        <th>Development 2</th>
+                                        <th>Itest 1</th>
+                                        <th>Itest 2</th>
+                                        <th>User Acceptance</th>
+                                        <th>Production</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="application in vm.applicationsAvailable">
+                                        <td ng-bind="application.Name"></td>
+                                        <td>
+                                            <input type="checkbox" ng-model="development1Exists" ng-disabled="!application.Development1Exists" ng-click="applicationSelected(application.ApplicationID, development1, development1Exists)"></td>
+                                        <td>
+                                            <input type="checkbox" ng-model="development2Exists" ng-disabled="!application.Development2Exists" ng-click="applicationSelected(application.ApplicationID, development2, development2Exists)"></td>
+                                        <td>
+                                            <input type="checkbox" ng-model="itest1Exists" ng-disabled="!application.Itest1Exists" ng-click="applicationSelected(application.ApplicationID, itest1, itest1Exists)"></td>
+                                        <td>
+                                            <input type="checkbox" ng-model="itest2Exists" ng-disabled="!application.Itest2Exists" ng-click="applicationSelected(application.ApplicationID, itest2, itest2Exists)"></td>
+                                        <td>
+                                            <input type="checkbox" ng-model="userAcceptanceExists" ng-disabled="!application.UserAcceptanceExists" ng-click="applicationSelected(application.ApplicationID, userAcceptance, userAcceptanceExists)"></td>
+                                        <td>
+                                            <input type="checkbox" ng-model="productionExists" ng-disabled="!application.ProductionExists" ng-click="applicationSelected(application.ApplicationID, production, productionExists)"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                 <!--Section E |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                    <div id="sectionE" class="tab-pane fade">
+                        </div>
+
+
+            </div>
+        </div>
+    
+</section>

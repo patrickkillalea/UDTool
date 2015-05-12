@@ -1,0 +1,105 @@
+﻿<section id="dashboard-view" class="mainbar" data-ng-controller="viewFixes as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="panel  xtable"  style="background-color: #242A38; border-color: #383F4F">
+                <div class=" xtable-header panel-heading primary" style="display: flex"><!--panel-heading-->
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input data-ng-model="fixSearch.$" type="text" placeholder="Search..." style="color: black" />
+                            <input data-ng-model="fixSearch.FixID" type="text" placeholder="FixID..." style="color: black" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table-fix table-striped xtable-table clicable">
+                        <thead>
+                            <tr>
+                                <th class="col-md-4">Fix Name</th>
+                                <th class="col-md-8">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="fix in fixes | filter: fixSearch" data-ng-click="selectFix(fix.FixID)">
+                                <td class="col-md-4 black" data-ng-bind="fix.Name"></td>
+                                <td class="col-md-8" data-ng-bind="fix.Description"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--<div class="panel  xtable"  style="background-color: #242A38; border-color: #383F4F">
+                <div class=" xtable-header panel-heading primary" style="display: flex">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input data-ng-model="viewSearch" type="text" placeholder="Search..." style="color: black" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table-fix table-striped xtable-table clicable">
+                        <thead>
+                            <tr>
+                                <th class="col-md-4">Fix Name</th>
+                                <th class="col-md-8">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="fix in fixes | filter: viewSearch" data-ng-click="selectAccount(fix.FixID)">
+                                <td class="col-md-4 black" data-ng-bind="fix.Name"></td>
+                                <td class="col-md-8" data-ng-bind="fix.Description"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+
+            <!--<div class="panel panel-primary">
+                <div class="panel-heading" style="display: flex">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input data-ng-model="accountSearch" type="text" placeholder="Search..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table-fix table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">Row</th>
+                                <th class="col-md-5">Account Name</th>
+                                <th class="col-md-2">Harmony Account</th>
+                                <th class="col-md-4 text-center">Account Id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="account in accounts | filter:accountSearch" data-ng-click="rowClicked(account.RowId)">
+                                <td class="col-md-1" data-ng-bind="account.RowId" data-ng-class="{ 'selectedRow': account.RowId == selectedRowId}"></td>
+                                <td class="col-md-5" data-ng-bind="account.AccountName" data-ng-class="{ 'selectedRow': account.RowId == selectedRowId}"></td>
+                                <td class="col-md-2" data-ng-bind="account.HarmonyAccountNumber" data-ng-class="{ 'selectedRow': account.RowId == selectedRowId}"></td>
+                                <td class="col-md-4" data-ng-bind="account.AccountId" data-ng-class="{ 'selectedRow': account.RowId == selectedRowId}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+        </div>
+    </section>
+    <script type="text/ng-template" id="confirmfix.html">
+        <div class="modal-danger">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Fix</h3>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this fix?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" ng-click="submit()"><i class="glyphicon glyphicon-ok"></i>SUBMIT</button>
+                <button class="btn btn-info" ng-click="cancel()"><i class="glyphicon glyphicon-remove"></i>CANCEL</button>
+            </div>
+        </div>
+    </script>
+</section>
